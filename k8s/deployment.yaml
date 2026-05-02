@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-k8s
+spec:
+  replicas: 2                        # Run 2 instances
+  selector:
+    matchLabels:
+      app: hello-k8s
+  template:
+    metadata:
+      labels:
+        app: hello-k8s
+    spec:
+      containers:
+        - name: hello-k8s
+          image: megabyte2002/hello-k8s:1.0
+          ports:
+            - containerPort: 8000
+          readinessProbe:            # K8s checks /health before sending traffic
+            httpGet:
+              path: /health
+              port: 8000
