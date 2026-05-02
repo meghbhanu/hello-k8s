@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: hello-k8s
-          image: megabyte2002/hello-k8s:1.0
+          image: megabyte2002/hello-k8s:73ec8cc
           ports:
             - containerPort: 8000
           readinessProbe:            # K8s checks /health before sending traffic
